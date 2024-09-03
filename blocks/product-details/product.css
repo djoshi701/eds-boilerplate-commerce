@@ -1,0 +1,9 @@
+/* stylelint-disable selector-class-pattern */
+/* stylelint-disable media-feature-range-notation */
+
+/* Large (landscape tablets, 1024px and up) */
+@media only screen and (min-width: 1024px) {
+  .pdp-product__content {
+    grid-column: 2 / span 12;
+  }
+}

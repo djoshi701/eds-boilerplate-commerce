@@ -1,0 +1,40 @@
+.alert-wrapper .alert {
+    margin-bottom: 10px;
+    padding: 15px;
+    color: var(--color-neutral-50);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.alert-wrapper .alert div p {
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+    margin: 0;
+}
+
+.alert-wrapper .alert button {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.alert-wrapper .alert div p .icon {
+    width: 18px;
+    height: 18px;
+}
+
+.alert-wrapper .alert.alert-success {
+    background-color: var(--color-positive-800);
+}
+
+.alert-wrapper .alert.alert-error {
+    background-color: var(--color-alert-800);
+}
+
+.alert-wrapper .alert.alert-warning {
+    background-color: var(--color-warning-800);
+}
