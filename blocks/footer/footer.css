@@ -1,0 +1,125 @@
+footer {
+  background-color: var(--color-neutral-200);
+  font: var(--type-body-2-default-font);
+  letter-spacing: var(--type-body-2-default-letter-spacing);
+}
+
+footer .footer p {
+  margin: 0;
+}
+
+footer .footer-top {
+  max-width: var(--page-max-width);
+  margin: auto;
+}
+
+footer .form-wrapper {
+  padding: 2rem;
+  background-color: var(--color-secondary-900);
+  border-bottom: 1px solid var(--color-neutral-400);
+  border-top: 1px solid var(--color-neutral-400);
+}
+
+.newsletter-form form {
+  display: flex;
+  align-items: center;
+}
+
+.newsletter-form form .field-wrapper {
+  display: block;
+  padding: 0;
+}
+
+.newsletter-form .text-wrapper {
+  width: 70%;
+}
+
+.newsletter-form .text-wrapper input {
+  border-radius: 0;
+}
+
+.newsletter-form .submit-wrapper {
+  width: 30%;
+}
+
+.newsletter-form .submit-wrapper button {
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+  height: 4.2rem;
+  align-items: center;
+  border-radius: 0;
+  padding: 0.2em 1rem;
+}
+
+.footer-links>div div:last-child ul {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 50%;
+  margin: 3rem auto;
+  gap: 2rem;
+}
+
+.footer-links>div div:last-child ul li {
+  height: 2.4rem;
+}
+
+.footer-links>div div:last-child ul li a {
+  display: block;
+  width: 2.4rem;
+  height: 2.4rem;
+  font-size: 0;
+}
+
+.footer-links .button-container {
+  border-bottom: 1px solid var(--color-neutral-400);
+  padding: 1.5rem 2rem;
+}
+
+.footer-copyright {
+  background-color: var(--color-primary-700);
+  padding: 1rem;
+  text-align: center;
+  color: var(--color-secondary-900);
+}
+
+@media (width >=900px) {
+  footer .footer-top {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    padding: 4rem 2rem;
+    column-gap: 1.5rem;
+  }
+
+  footer .columns-wrapper {
+    width: 70%;
+  }
+
+  .footer-links>div div:last-child ul {
+    justify-content: flex-start;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .footer-links .button-container {
+    border-bottom: none;
+    padding: 0;
+    margin-bottom: 1rem;
+  }
+
+  .columns.footer-links>div {
+    align-items: flex-start;
+    column-gap: 2rem;
+  }
+
+  footer .form-wrapper {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    width: 28%;
+  }
+}

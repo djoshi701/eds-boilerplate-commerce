@@ -1,0 +1,16 @@
+.swatch-container {
+    display: flex;
+    column-gap: 1.5rem;
+    margin: 0 0 1.6rem;
+    list-style: none;
+    padding: 0;
+}
+
+.swatch-item {
+    width: 3rem;
+    height: 3rem;
+}
+
+.swatch-item-outline {
+    outline: 1px solid var(--color-brand-300);
+}
