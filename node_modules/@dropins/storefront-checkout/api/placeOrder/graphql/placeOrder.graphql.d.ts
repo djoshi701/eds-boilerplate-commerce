@@ -1,2 +1,0 @@
-export declare const placeOrderMutation = "\n  mutation placeOrder($cartId: String!) {\n    placeOrder(input: { cart_id: $cartId }) {\n      orderV2 {\n        number\n        token\n      }\n    }\n  }\n";
-//# sourceMappingURL=placeOrder.graphql.d.ts.map

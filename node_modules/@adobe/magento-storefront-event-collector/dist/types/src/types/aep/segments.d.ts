@@ -1,4 +1,0 @@
-export declare type AlloySendEventResponse = {
-    destinations: [];
-};
-//# sourceMappingURL=segments.d.ts.map

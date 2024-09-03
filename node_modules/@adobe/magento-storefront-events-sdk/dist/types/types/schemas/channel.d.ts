@@ -1,5 +1,0 @@
-export declare type Channel = {
-    _id: string;
-    _type: string;
-};
-//# sourceMappingURL=channel.d.ts.map

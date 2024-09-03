@@ -1,4 +1,0 @@
-export declare type Shopper = {
-    shopperId: "logged-in" | "guest";
-};
-//# sourceMappingURL=shopper.d.ts.map

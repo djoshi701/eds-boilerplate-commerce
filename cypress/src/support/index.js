@@ -1,2 +1,0 @@
-import './deleteCustomer';
-import './getUserTokenCookie';

@@ -1,8 +1,0 @@
-declare type ConfigureSnowplowParams = {
-    appId: string;
-    collectorUrl: string;
-    collectorPath: string;
-};
-declare const configureSnowplow: ({ appId, collectorUrl, collectorPath }: ConfigureSnowplowParams) => void;
-export { configureSnowplow };
-//# sourceMappingURL=snowplow.d.ts.map

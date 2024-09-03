@@ -1,6 +1,0 @@
-export declare type Category = {
-    name: string;
-    urlKey: string;
-    urlPath: string;
-};
-//# sourceMappingURL=category.d.ts.map

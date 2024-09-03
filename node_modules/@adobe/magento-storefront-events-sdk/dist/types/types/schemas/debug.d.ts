@@ -1,4 +1,0 @@
-export declare type Debug = {
-    eventId?: string;
-};
-//# sourceMappingURL=debug.d.ts.map
