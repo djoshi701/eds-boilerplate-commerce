@@ -204,6 +204,9 @@ const Picker = props => {
                 }));
                 return;
             }
+
+            console.log('Inside Configs', configs)
+
             // Ignore metadata
             Object.keys(configs).forEach(key => {
                 if (key.startsWith(':')) {
