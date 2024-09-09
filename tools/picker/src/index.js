@@ -7,7 +7,11 @@ import getProductsInCategory from './queries/products.graphql.js';
 
 import './styles.css';
 
-const configFile = 'https://cloudbackend.corralive.com/configs.json';
+const configFile = {
+    prod : '/configs.json',
+    stage: '/configs-stage.json',
+    dev: '/configs-dev.json'
+};
 const defaultConfig = 'prod';
 
 /**

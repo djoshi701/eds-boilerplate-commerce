@@ -195,7 +195,11 @@ const Picker = props => {
             // Get configs and select default config
             let configs = {};
             try {
-                configs = await fetch(configFile).then(r => r.json());
+                configs = {
+                    dev: await fetch(configFile?.dev).then(r => r.json()),
+                    stage: await fetch(configFile?.stage).then(r => r.json()),
+                    prod: await fetch(configFile?.prod).then(r => r.json()),
+                }
             } catch (err) {
                 console.error(err);
                 setState(state => ({
@@ -204,8 +208,6 @@ const Picker = props => {
                 }));
                 return;
             }
-
-            console.log('Inside Configs', configs)
 
             // Ignore metadata
             Object.keys(configs).forEach(key => {
