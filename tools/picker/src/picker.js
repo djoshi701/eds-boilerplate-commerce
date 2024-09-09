@@ -196,9 +196,9 @@ const Picker = props => {
             let configs = {};
             try {
                 configs = {
-                    dev: await fetch(configFile?.dev).then(r => r.json()),
-                    stage: await fetch(configFile?.stage).then(r => r.json()),
-                    prod: await fetch(configFile?.prod).then(r => r.json()),
+                    dev: await fetch(configFile).then(r => r.json()),
+                    stage: await fetch(configFile).then(r => r.json()),
+                    prod: await fetch(configFile).then(r => r.json()),
                 }
             } catch (err) {
                 console.error(err);

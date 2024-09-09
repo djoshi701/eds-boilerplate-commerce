@@ -7,11 +7,12 @@ import getProductsInCategory from './queries/products.graphql.js';
 
 import './styles.css';
 
-const configFile = {
-    prod : '/configs.json',
-    stage: '/configs-stage.json',
-    dev: '/configs-dev.json'
-};
+const configFile = '/configs.json';
+// {
+//     prod : '/configs.json',
+//     stage: '/configs-stage.json',
+//     dev: '/configs-dev.json'
+// };
 const defaultConfig = 'prod';
 
 /**
