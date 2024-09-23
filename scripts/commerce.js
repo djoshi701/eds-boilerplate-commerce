@@ -100,6 +100,200 @@ export const productDetailQuery = `query ProductQuery($sku: String!) {
 }
 ${priceFieldsFragment}`;
 
+export const productDetailsMonolithicQuery = `query ProductQuery($sku: String!) {
+  products(filter: { sku: { eq: $sku } }) {
+    items {
+      __typename
+    id
+    name
+    sku
+    url_key
+    stock_status
+    small_image {
+        __typename
+        url
+        label
+    }
+    thumbnail {
+        url
+        label
+    }
+    categories {
+        name
+        url_path
+        breadcrumbs {
+            category_id
+            category_name
+        }
+    }
+    price_range {
+        __typename
+        minimum_price {
+            __typename
+            regular_price {
+                __typename
+                value
+                currency
+            }
+            final_price {
+                __typename
+                value
+                currency
+            }
+            discount {
+                __typename
+                amount_off
+            }
+        }
+        maximum_price {
+            __typename
+            final_price {
+                __typename
+                value
+                currency
+            }
+        }
+    }
+    short_description {
+                    __typename
+                    html
+                }
+                description {
+                    __typename
+                    html
+                }
+                image {
+                    url
+                    label
+                }
+                media_gallery {
+                    __typename
+                    url
+                    disabled
+                    label
+                    position
+                    ... on ProductVideo {
+                        video_content {
+                            media_type
+                            video_provider
+                            video_url
+                            video_title
+                            video_description
+                            video_metadata
+                        }
+                    }
+                }
+                categories {
+                    __typename
+                    name
+                    url_path
+                    breadcrumbs {
+                        __typename
+                        category_uid
+                        category_name
+                    }
+                }
+                ... on ConfigurableProduct {
+        configurable_options {
+            __typename
+            attribute_code
+            attribute_id
+            id
+            uid
+            label
+            values {
+                __typename
+                default_label
+                label
+                store_label
+                use_default_value
+                value_index
+                uid
+                swatch_data {
+                    __typename
+                    value
+                    ... on ImageSwatchData {
+                        thumbnail
+                        __typename
+                    }
+                }
+            }
+        }
+        variants {
+            __typename
+            attributes {
+                __typename
+                uid
+                code
+                value_index
+                label
+            }
+            product {
+                __typename
+                id
+                thumbnail {
+                    url
+                }
+                price_range {
+                    __typename
+                    minimum_price {
+                        __typename
+                        regular_price {
+                            __typename
+                            value
+                            currency
+                        }
+                        final_price {
+                            __typename
+                            value
+                            currency
+                        }
+                        discount {
+                            __typename
+                            amount_off
+                        }
+                    }
+                }
+                image {
+                    url
+                    label
+                }
+                media_gallery {
+                    __typename
+                    disabled
+                    label
+                    position
+                    url
+                    ... on ProductVideo {
+                        video_content {
+                            media_type
+                            video_provider
+                            video_url
+                            video_title
+                            video_description
+                            video_metadata
+                            __typename
+                        }
+                        __typename
+                    }
+                }
+                sku
+                stock_status
+            }
+        }
+    }
+                meta_title
+                meta_keyword
+                meta_description
+                canonical_url
+    }
+    total_count
+    page_info {
+      page_size
+    }
+  }
+}`
+
 /* Common functionality */
 
 export async function performCatalogServiceQuery(query, variables) {
@@ -156,8 +350,10 @@ export async function performMonolithGraphQLQuery(query, variables, GET = true, 
     }
   }
 
+
   let response;
   if (!GET) {
+
     response = await fetch(GRAPHQL_ENDPOINT, {
       method: 'POST',
       headers,
@@ -235,7 +431,7 @@ export async function getProduct(sku) {
   if (productsCache[sku]) {
     return productsCache[sku];
   }
-  const rawProductPromise = performCatalogServiceQuery(productDetailQuery, { sku });
+  const rawProductPromise = performCatalogServiceQuery(productDetailsMonolithicQuery, { sku });
   const productPromise = rawProductPromise.then((productData) => {
     if (!productData?.products?.[0]) {
       return null;
@@ -245,6 +441,26 @@ export async function getProduct(sku) {
   });
 
   productsCache[sku] = productPromise;
+  return productPromise;
+}
+
+const productsMonolithicCache = {};
+export async function getProductFromMagento(sku) {
+  // eslint-disable-next-line no-param-reassign
+  sku = sku.toUpperCase();
+  if (productsMonolithicCache[sku]) {
+    return productsMonolithicCache[sku];
+  }
+  const rawProductPromise = performMonolithGraphQLQuery(productDetailsMonolithicQuery, { sku }, true);
+  const productPromise = rawProductPromise.then((productData) => {
+    if (!productData?.data?.products?.items?.[0]) {
+      return null;
+    }
+
+    return productData?.data?.products?.items?.[0];
+  });
+
+  productsMonolithicCache[sku] = productPromise;
   return productPromise;
 }
 
